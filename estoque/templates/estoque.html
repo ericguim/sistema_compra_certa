@@ -41,8 +41,9 @@
                 <thead>
                   <tr>
                     <th scope="col">Produto</th>
-                    <th scope="col">1 Caixa [Kg]</th>
                     <th scope="col">Estoque</th>
+                    <th scope="col">1 Caixa [Kg]</th>
+                    <th scope="col">Total [Kg]</th>
                     <th scope="col">Fornecedor</th>
                   </tr>
                 </thead>
@@ -52,8 +53,9 @@
                     {% for produto in produtos %}
                         <tr>
                             <th scope="row">{{ produto.nome }}</th>
-                            <td>{{ produto.peso_caixa }}</td>
                             <td>{{ produto.estoque }}</td>
+                            <td>{{ produto.peso_caixa }}</td>
+                            <td>{{ produto.total }}</td>
                             <td>{{ produto.fornecedor }}</td>
                         </tr>
                     {% endfor %}

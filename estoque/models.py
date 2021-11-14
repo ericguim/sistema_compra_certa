@@ -26,6 +26,9 @@ class Produto(models.Model):
         self.estoque -= quantidade
         self.save()
 
+    def total(self):
+        return self.estoque * self.peso_caixa
+
 class Fornecedor(models.Model):
     class Meta:
         verbose_name = 'Fornecedor'
