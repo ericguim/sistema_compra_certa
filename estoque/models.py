@@ -13,8 +13,6 @@ class Produto(models.Model):
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
     estoque = models.IntegerField(default=0)
 
-    list_display = ('nome', 'peso_caixa', 'estoque')
-
     def __str__(self):
         return self.nome
     
