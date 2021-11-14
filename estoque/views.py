@@ -1,5 +1,7 @@
 from django.shortcuts import render
-
+from .models import Produto, Fornecedor
 
 def estoque(request):
-    return render(request, 'estoque.html', {})
+    produtos = Produto.objects.all()
+    fornecedores = Fornecedor.objects.all()
+    return render(request, 'estoque.html', {'produtos': produtos, 'fornecedores': fornecedores})
