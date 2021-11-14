@@ -11,7 +11,7 @@ class Produto(models.Model):
     nome = models.CharField(max_length=200)
     peso_caixa = models.IntegerField()
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
-    estoque = models.IntegerField()
+    estoque = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nome
