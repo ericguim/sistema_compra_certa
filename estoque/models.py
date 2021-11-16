@@ -12,6 +12,7 @@ class Produto(models.Model):
     peso_caixa = models.IntegerField()
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
     estoque = models.IntegerField(default=0)
+    consumo_medio = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
     def __str__(self):
         return self.nome
