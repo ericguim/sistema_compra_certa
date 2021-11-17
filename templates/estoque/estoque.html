@@ -16,17 +16,73 @@
 
 
     <body>
+
+        <!-- Header -->
+
         <div class="container">
-            
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                            <h1>Compra Certa</h1>
+                        <h1 style="padding-left: 11px;">Estoque Atual</h1>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="container">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="" active>Estoque Atual</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Entrada/Saída</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/fornecedor/">Fornecedores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Produtos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/">Administração</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Table de Estoque Atual -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Estoque [Kg]</th>
+                                <th scope="col">Estoque Mínimo</th>
+                                <th scope="col">Fornecedor</th>
+                                <th scope="col">Consumo Médio</th>
+                              </tr>
+                            </thead>
+            
+                            <tbody>
+            
+                                {% for produto in produtos %}
+                                    <tr>
+                                        <td>{{ produto.nome }}</td>
+                                        <td>{{ produto.estoque }}</td>
+                                        <td>17/11/2021</td>
+                                        <td>{{ produto.fornecedor }}</td>
+                                        <td>{{ produto.consumo_medio }}</td>
+                                    </tr>
+                                {% endfor %}
+            
+                            </tbody>
+                        </table>
                 </div>
             </div>
 
 
+
+
+
+
+
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-tabs">
@@ -37,9 +93,11 @@
                         <li><a href="/admin/">Administração</a></li>
                     </ul>
                 </div>
-            </div>
-            
-            <table class="table table-bordered">
+            </div> -->
+
+        <!-- Table de Estoque Atual -->
+
+            <!-- <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">Produto</th>
@@ -55,7 +113,7 @@
 
                     {% for produto in produtos %}
                         <tr>
-                            <th scope="row">{{ produto.nome }}</th>
+                            <td>{{ produto.nome }}</td>
                             <td>{{ produto.estoque }}</td>
                             <td>{{ produto.peso_caixa }}</td>
                             <td>{{ produto.total }}</td>
@@ -65,7 +123,7 @@
                     {% endfor %}
 
                 </tbody>
-            </table>
+            </table> -->
 
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
