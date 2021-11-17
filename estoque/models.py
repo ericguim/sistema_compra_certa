@@ -9,7 +9,6 @@ class Produto(models.Model):
         verbose_name_plural = 'Produtos'
     
     nome = models.CharField(max_length=200)
-    peso_caixa = models.IntegerField()
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
     estoque = models.IntegerField(default=0)
     consumo_medio = models.DecimalField(max_digits=5, decimal_places=2, default=0)
@@ -24,9 +23,6 @@ class Produto(models.Model):
     def remover(self, quantidade):
         self.estoque -= quantidade
         self.save()
-
-    def total(self):
-        return self.estoque * self.peso_caixa
 
 class Fornecedor(models.Model):
     class Meta:
