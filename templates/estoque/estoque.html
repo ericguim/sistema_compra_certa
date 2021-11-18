@@ -1,49 +1,20 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Estoque - Compra Certa</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/headers.css' %}">
-    </head>
-    
-
-
-    <body>
+{% block content %}
 
         <!-- Header -->
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h1 style="padding-left: 11px;">Estoque Atual</h1>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h1 style="text-align: center;">Estoque Atual</h1>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Navbar -->
-        <nav class="navbar">
-            <div class="container">
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="" active>Estoque Atual</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Entrada</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Saída</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/fornecedor/">Fornecedores</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Produtos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/">Administração</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        </header>
 
         <!-- Table de Estoque Atual -->
         <div class="container">
@@ -80,59 +51,6 @@
                         </table>
                 </div>
             </div>
-
-
-
-
-
-
-
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="nav nav-tabs">
-                        <li><a href="">Estoque Atual</a></li>
-                        <li><a href="/admin/estoque/produto/">Entrada/Saída</a></li>
-                        <li><a href="/admin/estoque/fornecedor/">Fornecedores</a></li>
-                        <li><a href="/admin/estoque/produto/">Produtos</a></li>
-                        <li><a href="/admin/">Administração</a></li>
-                    </ul>
-                </div>
-            </div> -->
-
-        <!-- Table de Estoque Atual -->
-
-            <!-- <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">Produto</th>
-                    <th scope="col">Estoque</th>
-                    <th scope="col">1 Caixa [Kg]</th>
-                    <th scope="col">Total [Kg]</th>
-                    <th scope="col">Fornecedor</th>
-                    <th scope="col">Consumo Médio</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                    {% for produto in produtos %}
-                        <tr>
-                            <td>{{ produto.nome }}</td>
-                            <td>{{ produto.estoque }}</td>
-                            <td>{{ produto.peso_caixa }}</td>
-                            <td>{{ produto.total }}</td>
-                            <td>{{ produto.fornecedor }}</td>
-                            <td>{{ produto.consumo_medio }}</td>
-                        </tr>
-                    {% endfor %}
-
-                </tbody>
-            </table> -->
-
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="{% static 'js/script.js' %}"></script>
-    </body>
-</html>
+
+{% endblock %}
