@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'estoque',
+    'entrada',
+    'saida',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

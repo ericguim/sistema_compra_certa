@@ -35,7 +35,8 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="" active>Estoque Atual</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Entrada/Saída</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Entrada</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Saída</a></li>
                         <li class="nav-item"><a class="nav-link" href="/admin/estoque/fornecedor/">Fornecedores</a></li>
                         <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">Produtos</a></li>
                         <li class="nav-item"><a class="nav-link" href="/admin/">Administração</a></li>
@@ -51,11 +52,13 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Estoque [Kg]</th>
-                                <th scope="col">Estoque Mínimo</th>
-                                <th scope="col">Fornecedor</th>
-                                <th scope="col">Consumo Médio</th>
+                                <th scope="col" style="text-align: center;">Produto</th>
+                                <th scope="col" style="text-align: center;">Estoque Mínimo [Kg]</th>
+                                <th scope="col" style="text-align: center;">Estoque Máximo [Kg]</th>
+                                <th scope="col" style="text-align: center;">Estoque Atual [Kg]</th>
+                                <th scope="col" style="text-align: center;">Data p/ Estoque Mínimo</th>
+                                <th scope="col" style="text-align: center;">Fornecedor</th>
+                                <th scope="col" style="text-align: center;">Consumo Médio</th>
                               </tr>
                             </thead>
             
@@ -64,10 +67,12 @@
                                 {% for produto in produtos %}
                                     <tr>
                                         <td>{{ produto.nome }}</td>
-                                        <td>{{ produto.estoque }}</td>
-                                        <td>17/11/2021</td>
+                                        <td style="text-align: center;">{{ produto.estoque_minimo }}</td>
+                                        <td style="text-align: center;">{{ produto.estoque_maximo }}</td>
+                                        <td style="text-align: center;">{{ produto.estoque }}</td>
+                                        <td style="text-align: center;">17/11/2021</td>
                                         <td>{{ produto.fornecedor }}</td>
-                                        <td>{{ produto.consumo_medio }}</td>
+                                        <td style="text-align: center;">{{ produto.consumo_medio }}</td>
                                     </tr>
                                 {% endfor %}
             

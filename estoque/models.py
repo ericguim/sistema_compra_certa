@@ -12,6 +12,8 @@ class Produto(models.Model):
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
     estoque = models.IntegerField(default=0)
     consumo_medio = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    estoque_minimo = models.IntegerField(default=0)
+    estoque_maximo = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nome
