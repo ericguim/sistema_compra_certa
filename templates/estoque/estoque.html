@@ -3,56 +3,45 @@
 
 {% block content %}
 
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="page-header">
-                            <h1 style="text-align: center;">Estoque Atual</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <br>
-        
+<!-- Header -->
+<section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
+            <h2 class="text-info" style="margin-bottom: 0;">ESTOQUE ATUAL</h2>
+        </div>
+    </div>
+</section>
 
-        <!-- Table de Estoque Atual -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                        <table class="table table-striped table-bordered table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col" style="text-align: center;">Produto</th>
-                                <th scope="col" style="text-align: center;">Estoque Mínimo [Kg]</th>
-                                <th scope="col" style="text-align: center;">Estoque Máximo [Kg]</th>
-                                <th scope="col" style="text-align: center;">Estoque Atual [Kg]</th>
-                                <th scope="col" style="text-align: center;">Data p/ Estoque Mínimo</th>
-                                <th scope="col" style="text-align: center;">Fornecedor</th>
-                                <th scope="col" style="text-align: center;">Consumo Médio</th>
-                              </tr>
-                            </thead>
-            
-                            <tbody>
-            
-                                {% for produto in produtos %}
-                                    <tr>
-                                        <td>{{ produto.nome }}</td>
-                                        <td style="text-align: center;">{{ produto.estoque_minimo }}</td>
-                                        <td style="text-align: center;">{{ produto.estoque_maximo }}</td>
-                                        <td style="text-align: center;">{{ produto.estoque }}</td>
-                                        <td style="text-align: center;">17/11/2021</td>
-                                        <td>{{ produto.fornecedor }}</td>
-                                        <td style="text-align: center;">{{ produto.consumo_medio }}</td>
-                                    </tr>
-                                {% endfor %}
-            
-                            </tbody>
-                        </table>
-                </div>
+ <!-- Tabela de Estoque -->
+<section class="clean-block clean-info dark">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Estoque Mínimo [Kg]</th>
+                            <th>Estoque Máximo [Kg]</th>
+                            <th>Estoque Atual [Kg]</th>
+                            <th>Data p/ Estoque Mínimo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                            <tr>
+                                <td style="border-right-width: 1px;text-align: left; font-weight: bold;">{{ produto.nome }}</td>
+                                <td style="border-right-width: 1px;">{{ produto.estoque_minimo }}</td>
+                                <td style="border-right-width: 1px;">{{ produto.estoque_maximo }}</td>
+                                <td style="border-right-width: 1px;font-weight: bold;">{{ produto.estoque }}</td>
+                                <td>20/11/2021</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+</section>
 
 {% endblock %}

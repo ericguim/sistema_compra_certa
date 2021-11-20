@@ -1,39 +1,14 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Compra Certa</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'estoque' %}">Estoque Atual</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'entrada' %}">Entrada</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'saida' %}">Saída</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/estoque/fornecedor/">Fornecedores</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/estoque/produto/">Produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/">Administração</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-light navbar-expand-lg bg-white clean-navbar">
+  <div class="container"><a class="navbar-brand logo" href="#">Compra Certa</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="{% url 'estoque' %}">ESTOQUE</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'entrada' %}">ENTRADA</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'saida' %}">SAÍDA</a></li>
+              <li class="nav-item"><a class="nav-link" href="/admin/estoque/produto/">PRODUTOS</a></li>
+              <li class="nav-item"><a class="nav-link" href="/admin/estoque/fornecedor/">FORNECEDORES</a></li>
+              <li class="nav-item"><a class="nav-link" href="/admin/">ADMIN</a></li>
+          </ul>
       </div>
-    </div>
-  </nav>
-<br>
+  </div>
+</nav>
