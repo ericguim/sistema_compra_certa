@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Header -->
+<section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
+            <h2 class="text-info" style="margin-bottom: 0;">ESTOQUE ATUAL</h2>
+        </div>
+    </div>
+</section>
+
+ <!-- Tabela de Estoque -->
+<section class="clean-block clean-info dark">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Estoque Mínimo [Kg]</th>
+                            <th>Estoque Máximo [Kg]</th>
+                            <th>Estoque Atual [Kg]</th>
+                            <th>Data p/ Estoque Mínimo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                            <tr>
+                                <td style="border-right-width: 1px;text-align: left; font-weight: bold;">{{ produto.nome }}</td>
+                                <td style="border-right-width: 1px;">{{ produto.estoque_minimo }}</td>
+                                <td style="border-right-width: 1px;">{{ produto.estoque_maximo }}</td>
+                                <td style="border-right-width: 1px;font-weight: bold;">{{ produto.estoque }}</td>
+                                <td>20/11/2021</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

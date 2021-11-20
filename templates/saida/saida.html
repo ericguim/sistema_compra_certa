@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+    
+{% block content %}
+
+<!-- Header -->
+<section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
+            <h2 class="text-info" style="margin-bottom: 0;">SAIDA DE PRODUTO</h2>
+        </div>
+    </div>
+</section>
+
+ <!-- Tabela de Estoque -->
+<section class="clean-block clean-info dark">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Estoque Atual</th>
+                            <th>Quantidade Retirada</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                            <tr>
+                                <td style="border-right-width: 1px;text-align: left; font-weight: bold;">{{ produto.nome }}</td>
+                                <td style="border-right-width: 1px;">{{ produto.estoque }}</td>
+                                <td style="border-right-width: 1px;"><input type="number" class="form-control col-xs-2"></td>
+                                <td style="font-weight: bold;"><button type="button" class="btn btn-primary">Confirmar</button></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

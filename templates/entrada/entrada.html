@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+    
+{% block content %}
+    
+<!-- Header -->
+<section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
+            <h2 class="text-info" style="margin-bottom: 0;">ENTRADA DE PROTUDOS</h2>
+        </div>
+    </div>
+</section>
+
+ <!-- Tabela de Estoque -->
+<section class="clean-block clean-info dark">
+    <div class="container">
+        <div class="block-heading" style="padding-top: 20px;">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Selecione o Produto</th>
+                            <th>Quantidade [Kg]</th>
+                            <th>Fornecedor</th>
+                            <th>Preço</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td style="border-right-width: 1px;text-align: left; font-weight: bold;">
+                                    <select class="form-control" id="produto_id" name="produto_id">
+                                        {% for produto in produtos %}
+                                            <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td style="border-right-width: 1px;">
+                                    <input type="number" class="form-control col-xs-2" id="quantidade" name="quantidade">
+                                </td>
+                                <td style="border-right-width: 1px;">
+                                    <select class="form-control" id="fornecedor_id" name="fornecedor_id">
+                                        {% for fornecedor in fornecedores %}
+                                            <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td style="border-right-width: 1px;font-weight: bold;">
+                                    <input type="number" class="form-control col-xs-2" id="preco" name="preco">
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">Confirmar</button>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
