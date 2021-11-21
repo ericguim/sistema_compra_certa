@@ -22,6 +22,7 @@ def saida(request):
 
         # Save object
         saida.save()
+        messages.success(request, 'Produto retirado com sucesso')
         return redirect('saida')
 
     produtos = Produto.objects.all()
