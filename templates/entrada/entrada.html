@@ -7,8 +7,10 @@
 <section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
     <div class="container">
         <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
-            <h2 class="text-info" style="margin-bottom: 0;">ENTRADA DE PROTUDOS</h2>
+            <h2 class="text-info" style="margin-bottom: 0;">ENTRADA DE PROTUDO</h2>
         </div>
+        <!-- Alerts -->
+        {% include 'partials/_alerts.html' %}
     </div>
 </section>
 
@@ -28,31 +30,43 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <form action="{% url 'entrada' %}" method="POST">
+                            {% csrf_token %}
                             <tr>
                                 <td style="border-right-width: 1px;text-align: left; font-weight: bold;">
-                                    <select class="form-control" id="produto_id" name="produto_id">
-                                        {% for produto in produtos %}
-                                            <option value="{{ produto.id }}">{{ produto.nome }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <div class="form-group">
+                                        <select class="form-control" id="produto" name="produto" required>
+                                            {% for produto in produtos %}
+                                                <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </td>
                                 <td style="border-right-width: 1px;">
-                                    <input type="number" class="form-control col-xs-2" id="quantidade" name="quantidade">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control col-xs-2" id="quantidade" name="quantidade" required>
+                                    </div>
                                 </td>
                                 <td style="border-right-width: 1px;">
-                                    <select class="form-control" id="fornecedor_id" name="fornecedor_id">
-                                        {% for fornecedor in fornecedores %}
-                                            <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <div class="form-group">
+                                        <select class="form-control" id="fornecedor" name="fornecedor" required>
+                                            {% for fornecedor in fornecedores %}
+                                                <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </td>
                                 <td style="border-right-width: 1px;font-weight: bold;">
-                                    <input type="number" class="form-control col-xs-2" id="preco" name="preco">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control col-xs-2" id="preco" name="preco">
+                                    </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary">Confirmar</button>
+                                    <!-- <button type="button" class="btn btn-primary">Confirmar</button> -->
+                                    <input type="submit" value="Confirmar" class="btn btn-primary">
                                 </td>
                             </tr>
+                        </form>
                     </tbody>
                 </table>
             </div>

@@ -7,8 +7,10 @@
 <section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
     <div class="container">
         <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
-            <h2 class="text-info" style="margin-bottom: 0;">SAIDA DE PRODUTO</h2>
+            <h2 class="text-info" style="margin-bottom: 0;">SAÍDA DE PRODUTO</h2>
         </div>
+        <!-- Alerts -->
+        {% include 'partials/_alerts.html' %}
     </div>
 </section>
 
@@ -21,19 +23,35 @@
                     <thead>
                         <tr>
                             <th>Produto</th>
-                            <th>Estoque Atual</th>
-                            <th>Quantidade Retirada</th>
+                            <th>Estoque Atual [Kg]</th>
+                            <th>Quantidade Retirada [Kg]</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for produto in produtos %}
-                            <tr>
-                                <td style="border-right-width: 1px;text-align: left; font-weight: bold;">{{ produto.nome }}</td>
-                                <td style="border-right-width: 1px;">{{ produto.estoque }}</td>
-                                <td style="border-right-width: 1px;"><input type="number" class="form-control col-xs-2"></td>
-                                <td style="font-weight: bold;"><button type="button" class="btn btn-primary">Confirmar</button></td>
-                            </tr>
+                            <form action="{% url 'saida' %}" method="POST">
+                                {% csrf_token %}
+                                <tr>
+                                    <td style="border-right-width: 1px;text-align: left; font-weight: bold;">
+                                        <div class="form-group">
+                                            <input type="hidden" name="produto" id="produto" value="{{ produto.id }}">
+                                        </div>
+                                        {{ produto.nome }}
+                                    </td>
+                                    <td style="border-right-width: 1px;">
+                                        {{ produto.estoque }}
+                                    </td>
+                                    <td style="border-right-width: 1px;">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control col-xs-2"  id="quantidade" name="quantidade">
+                                        </div>
+                                    </td>
+                                    <td style="font-weight: bold;">
+                                        <input type="submit" value="Confirmar" class="btn btn-primary">
+                                    </td>
+                                </tr>
+                            </form>
                         {% endfor %}
                     </tbody>
                 </table>
