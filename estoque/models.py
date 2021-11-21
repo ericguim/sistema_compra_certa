@@ -61,3 +61,7 @@ class Saida(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.DO_NOTHING)
     quantidade = models.IntegerField()
     data_saida = models.DateTimeField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        self.produto.remover(self.quantidade)
+        super(Saida, self).save(*args, **kwargs)
