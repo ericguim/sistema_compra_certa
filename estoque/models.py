@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from datetime import datetime, timedelta, date
+import math
 
 
 class Produto(models.Model):
@@ -25,6 +27,13 @@ class Produto(models.Model):
     def remover(self, quantidade):
         self.estoque -= int(quantidade)
         self.save()
+
+    def previsao_estoque_minimo(self):
+        if self.estoque < self.estoque_minimo:
+            return datetime.date(datetime.now()).strftime('%d/%m/%Y')
+        else:
+            data = datetime.date(datetime.now()) + timedelta(days=math.floor((self.estoque - self.estoque_minimo) / self.consumo_medio))
+            return data.strftime('%d/%m/%Y')
 
 class Fornecedor(models.Model):
     class Meta:
