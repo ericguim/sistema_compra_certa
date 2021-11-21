@@ -28,31 +28,43 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <form action="{% url 'entrada' %}" method="POST">
+                            {% csrf_token %}
                             <tr>
                                 <td style="border-right-width: 1px;text-align: left; font-weight: bold;">
-                                    <select class="form-control" id="produto_id" name="produto_id">
-                                        {% for produto in produtos %}
-                                            <option value="{{ produto.id }}">{{ produto.nome }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <div class="form-group">
+                                        <select class="form-control" id="produto_id" name="produto_id" required>
+                                            {% for produto in produtos %}
+                                                <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </td>
                                 <td style="border-right-width: 1px;">
-                                    <input type="number" class="form-control col-xs-2" id="quantidade" name="quantidade">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control col-xs-2" id="quantidade" name="quantidade" required>
+                                    </div>
                                 </td>
                                 <td style="border-right-width: 1px;">
-                                    <select class="form-control" id="fornecedor_id" name="fornecedor_id">
-                                        {% for fornecedor in fornecedores %}
-                                            <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <div class="form-group">
+                                        <select class="form-control" id="fornecedor_id" name="fornecedor_id" required>
+                                            {% for fornecedor in fornecedores %}
+                                                <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </td>
                                 <td style="border-right-width: 1px;font-weight: bold;">
-                                    <input type="number" class="form-control col-xs-2" id="preco" name="preco">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control col-xs-2" id="preco" name="preco">
+                                    </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary">Confirmar</button>
+                                    <!-- <button type="button" class="btn btn-primary">Confirmar</button> -->
+                                    <input type="submit" value="Confirmar" class="btn btn-primary">
                                 </td>
                             </tr>
+                        </form>
                     </tbody>
                 </table>
             </div>
