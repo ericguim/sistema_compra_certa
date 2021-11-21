@@ -23,9 +23,9 @@
                     <thead>
                         <tr>
                             <th>Produto</th>
-                            <th>Estoque Atual [Kg]</th>
-                            <th>Quantidade Retirada [Kg]</th>
-                            <th></th>
+                            <th style="width: 30%">Estoque Atual [Kg]</th>
+                            <th style="width: 14%">Quantidade Retirada [Kg]</th>
+                            <th style="width: 14%"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,13 +33,13 @@
                             <form action="{% url 'saida' %}" method="POST">
                                 {% csrf_token %}
                                 <tr>
-                                    <td style="border-right-width: 1px;text-align: left; font-weight: bold;">
+                                    <td style="border-right-width: 1px;text-align: left; font-weight: bold; vertical-align: middle;">
                                         <div class="form-group">
                                             <input type="hidden" name="produto" id="produto" value="{{ produto.id }}">
                                         </div>
                                         {{ produto.nome }}
                                     </td>
-                                    <td style="border-right-width: 1px;">
+                                    <td style="border-right-width: 1px; vertical-align: middle;">
                                         {{ produto.estoque }}
                                     </td>
                                     <td style="border-right-width: 1px;">
