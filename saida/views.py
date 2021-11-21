@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from estoque.models import Produto, Saida
-
+from django.contrib import messages
 
 def saida(request):
     # Get form values
@@ -8,9 +8,14 @@ def saida(request):
         produto = request.POST.get('produto')
         
         if request.POST.get('quantidade') == '':
-            quantidade = 0
+            messages.error(request, 'Quantidade não pode ser vazia')
+            return redirect('saida')
         else:
             quantidade = request.POST.get('quantidade')
+        
+        if int(quantidade) > Produto.objects.get(id=produto).estoque:
+            messages.error(request, 'Quantidade maior que o estoque atual')
+            return redirect('saida')
 
         # Create new object
         saida = Saida(produto=Produto.objects.get(id=produto), quantidade=quantidade)

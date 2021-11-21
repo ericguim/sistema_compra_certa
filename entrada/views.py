@@ -1,12 +1,19 @@
 from django.shortcuts import render, redirect
 from estoque.models import Produto, Fornecedor, Entrada, Saida
+from django.contrib import messages
 
 def entrada(request):
     # Get form values
     if request.method == 'POST':
         produto = request.POST.get('produto')
-        quantidade = request.POST.get('quantidade')
         fornecedor = request.POST.get('fornecedor')
+
+        if int(request.POST.get('quantidade')) == 0:
+            messages.error(request, 'Quantidade não pode ser 0')
+            return redirect('entrada')
+
+        quantidade = request.POST.get('quantidade')
+
         if request.POST.get('preco') == '':
             preco = 0
         else:
@@ -17,6 +24,7 @@ def entrada(request):
 
         # Save object
         entrada.save()
+        messages.success(request, 'Entrada cadastrada com sucesso')
         return redirect('entrada')
 
     produtos = Produto.objects.all()
