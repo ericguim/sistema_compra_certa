@@ -33,7 +33,7 @@
                             <tr>
                                 <td style="border-right-width: 1px;text-align: left; font-weight: bold;">
                                     <div class="form-group">
-                                        <select class="form-control" id="produto_id" name="produto_id" required>
+                                        <select class="form-control" id="produto" name="produto" required>
                                             {% for produto in produtos %}
                                                 <option value="{{ produto.id }}">{{ produto.nome }}</option>
                                             {% endfor %}
@@ -47,7 +47,7 @@
                                 </td>
                                 <td style="border-right-width: 1px;">
                                     <div class="form-group">
-                                        <select class="form-control" id="fornecedor_id" name="fornecedor_id" required>
+                                        <select class="form-control" id="fornecedor" name="fornecedor" required>
                                             {% for fornecedor in fornecedores %}
                                                 <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
                                             {% endfor %}

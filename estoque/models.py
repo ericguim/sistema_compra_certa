@@ -19,11 +19,11 @@ class Produto(models.Model):
         return self.nome
     
     def adicionar(self, quantidade):
-        self.estoque += quantidade
+        self.estoque += int(quantidade)
         self.save()
     
     def remover(self, quantidade):
-        self.estoque -= quantidade
+        self.estoque -= int(quantidade)
         self.save()
 
 class Fornecedor(models.Model):
@@ -48,9 +48,14 @@ class Fornecedor(models.Model):
 class Entrada(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.DO_NOTHING)
     quantidade = models.IntegerField()
-    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.DO_NOTHING)
-    preco = models.DecimalField(max_digits=5, decimal_places=2)
+    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.DO_NOTHING, null=True)
+    preco = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     data_entrada = models.DateTimeField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        self.produto.adicionar(self.quantidade)
+        super(Entrada, self).save(*args, **kwargs)
+
 
 class Saida(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.DO_NOTHING)
