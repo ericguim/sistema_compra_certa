@@ -9,7 +9,7 @@ class Produto(models.Model):
         verbose_name_plural = 'Produtos'
     
     nome = models.CharField(max_length=200)
-    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
+    #fornecedor = models.ForeignKey('Fornecedor', on_delete=models.CASCADE)
     estoque = models.IntegerField(default=0)
     consumo_medio = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     estoque_minimo = models.IntegerField(default=0)
@@ -48,9 +48,11 @@ class Fornecedor(models.Model):
 class Entrada(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.DO_NOTHING)
     quantidade = models.IntegerField()
-    data = models.DateTimeField(default=timezone.now)
+    fornecedor = models.ForeignKey('Fornecedor', on_delete=models.DO_NOTHING)
+    preco = models.DecimalField(max_digits=5, decimal_places=2)
+    data_entrada = models.DateTimeField(default=timezone.now)
 
 class Saida(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.DO_NOTHING)
     quantidade = models.IntegerField()
-    data = models.DateTimeField(default=timezone.now)
+    data_saida = models.DateTimeField(default=timezone.now)
