@@ -32,11 +32,18 @@ class Produto(models.Model):
         if self.estoque < self.estoque_minimo:
             return datetime.date(datetime.now()).strftime('%d/%m/%Y')
         elif self.consumo_medio == 0:
-            data = datetime.date(datetime.now()) + timedelta(days=math.floor((self.estoque - self.estoque_minimo) / 1))
-            return data.strftime('%d/%m/%Y')
+            return "Sem consumo médio."
         else:
             data = datetime.date(datetime.now()) + timedelta(days=math.floor((self.estoque - self.estoque_minimo) / self.consumo_medio))
             return data.strftime('%d/%m/%Y')
+
+    def dias_estoque_minimo(self):
+        if self.estoque < self.estoque_minimo:
+            return (datetime.date(datetime.now()) - datetime.date(datetime.now())).days
+        elif self.consumo_medio == 0:
+            return "Sem consumo médio."
+        else:
+            return math.floor((self.estoque - self.estoque_minimo) / self.consumo_medio)
 
 class Fornecedor(models.Model):
     class Meta:
