@@ -24,17 +24,28 @@
                             <th>Estoque Mínimo [Kg]</th>
                             <th>Estoque Máximo [Kg]</th>
                             <th>Estoque Atual [Kg]</th>
+                            <th>Dias p/ Estoque Minimo</th>
                             <th>Data p/ Estoque Mínimo</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for produto in produtos %}
                             <tr>
-                                <td style="border-right-width: 1px;text-align: left; font-weight: bold;">{{ produto.nome }}</td>
+                                <td style="border-right-width: 1px; text-align: left; font-weight: bold;">{{ produto.nome }}</td>
                                 <td style="border-right-width: 1px;">{{ produto.estoque_minimo }}</td>
                                 <td style="border-right-width: 1px;">{{ produto.estoque_maximo }}</td>
-                                <td style="border-right-width: 1px;font-weight: bold;">{{ produto.estoque }}</td>
-                                <td>{{ produto.previsao_estoque_minimo }}</td>
+                                <td style="border-right-width: 1px; font-weight: bold;">{{ produto.estoque }}</td>
+                                {% if produto.dias_estoque_minimo == 0 %}
+                                    <td style="border-right-width: 1px; font-weight: bold; color: red;">{{ produto.dias_estoque_minimo }}</td>
+                                {% else %}
+                                    <td style="border-right-width: 1px;">{{ produto.dias_estoque_minimo }}</td>
+                                {% endif %}
+
+                                {% if produto.previsao_estoque_minimo == data %}
+                                    <td style="font-weight: bold; color: red;">{{ produto.previsao_estoque_minimo }}</td>
+                                {% else %}
+                                    <td>{{ produto.previsao_estoque_minimo }}</td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </tbody>
