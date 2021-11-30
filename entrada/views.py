@@ -3,6 +3,9 @@ from estoque.models import Produto, Fornecedor, Entrada, Saida
 from django.contrib import messages
 
 def entrada(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     # Get form values
     if request.method == 'POST':
         produto = request.POST.get('produto')
