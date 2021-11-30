@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = ['dev-compra-certa.herokuapp.com', 'compracerta.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['compracerta.herokuapp.com', 'dev-compra-certa-github.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
