@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+    
+{% block content %}
+<!-- Header -->
+<section class="clean-block clean-info dark" style="padding-bottom: 0px;text-align: center;">
+  <div class="container">
+      <div class="block-heading" style="padding-top: 20px;padding-bottom: 20px;text-align: center;margin-bottom: 0;">
+          <h2 class="text-info" style="margin-bottom: 0;">FAÇA LOGIN</h2>
+      </div>
+      <!-- Alerts -->
+      {% include 'partials/_alerts.html' %}
+  </div>
+</section>
+
+
+<section id="login" class="clean-block clean-info dark py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 mx-auto text-center">
+        <form action="{% url 'login' %}" class="form-signin" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username" class="sr-only" style="text-align: center;">Usuário</label>
+            <input type="text" name="username" id="username" class="form-control" placeholder="Usuário" required autofocus>
+          </div>
+
+          <br>
+          <div class="form-group">
+            <label for="password" class="sr-only">Senha</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
+          </div>
+          <br>
+          <button class="btn btn-lg btn-primary btn-block text-center" type="submit">Confirmar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'estoque',
     'entrada',
     'saida',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

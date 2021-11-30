@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Produto, Fornecedor
 from datetime import datetime
 
 def estoque(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     produtos = Produto.objects.all()
     fornecedores = Fornecedor.objects.all()
     data = datetime.date(datetime.now()).strftime('%d/%m/%Y')
