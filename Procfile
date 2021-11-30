@@ -1,0 +1,1 @@
+web: gunicorn compra_certa.wsgi --log-file -
