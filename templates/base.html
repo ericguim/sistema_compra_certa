@@ -12,25 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="{% static 'css/vanilla-zoom.min.css' %}">
 </head>
-
-
-<body>
-
+<body class="d-flex flex-column min-vh-100">
     <!-- Navbar -->
     {% include 'partials/_navbar.html' %}
 
     <!-- Page Content -->
     <main class="page landing-page">
-
         {% block content %} {% endblock %}
-
     </main>
 
-    
+    <!-- Footer -->
+    {% include 'partials/_footer.html' %}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="{% static 'js/vanilla-zoom.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
 </body>
-
 </html>
