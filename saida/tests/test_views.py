@@ -9,15 +9,21 @@ class TestViews(TestCase):
   def setUp(self):
     self.client = Client()
     self.saida_url = reverse('saida')
+
+    # Cria um Produto no banco de dados
     self.produto = Produto(nome='Produto Teste', estoque=10, consumo_medio=1, estoque_minimo=5, estoque_maximo=15)
     self.produto.save()
+
+    # Cria um Fornecedor no banco de dados
     self.fornecedor = Fornecedor(nome='Fornecedor Teste', telefone='123456789', lead_time=1, entrega_segunda=True, entrega_terca=True, entrega_quarta=True, entrega_quinta=True, entrega_sexta=True, entrega_sabado=True, entrega_domingo=True)
     self.fornecedor.save()
 
+    # Cria um Usuario no banco de dados e loga no sistema
     self.user = User.objects.create_user(username='testuser', password='12345')
     self.client.login(username='testuser', password='12345')
 
 
+  # Testa se a view saida está correta
   def test_saida_POST(self):
     self.produtos = Produto.objects.all()
     self.fornecedores = Fornecedor.objects.all()
