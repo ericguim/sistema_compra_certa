@@ -1,4 +1,4 @@
 # Sistema Compra Certa
-Projeto Integrador Univesp - PJI240 - SALA 007 - GRUPO 067
+Projeto Integrador Univesp - PJI310 - SALA 001 - GRUPO 014
 
-Este projeto propõe o uso de “Aplicações Web” com banco de dados para o controle de estoque em uma pequena empresa de varejo do ramo de carnes.
+Este projeto propõe o Desenvolvimento de um Software para Controle de Estoque de Uma Casa de Carnes Utilizando Framework Web, Javascript e fornecimento de API.
